@@ -33,8 +33,8 @@ import pkg from "./package.json";
 import createHTMLPlugin from "./lib/create-html";
 import addFilesPlugin from "./lib/add-files-plugin";
 
-// Delete 'dist'
-rimraf.sync("dist");
+// Delete 'docs'
+rimraf.sync("docs");
 rimraf.sync("dist-prerender");
 rimraf.sync(".rpt2_cache");
 
@@ -45,7 +45,7 @@ function buildConfig({ prerender, watch } = {}) {
       sw: "src/sw/index.ts"
     },
     output: {
-      dir: "dist",
+      dir: "docs",
       format: "amd",
       sourcemap: !prerender,
       entryFileNames: "[name].js",
