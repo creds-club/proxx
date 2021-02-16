@@ -20,11 +20,6 @@
     "fmt_test": "test $(prettier -l 'src/**/*.{ts,tsx,css}' *.{js,json,md} 'lib/**/*.js' | wc -l) -eq 0",
     "test": "npm run fmt_test && npm run lint && npm run build"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
-  },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
