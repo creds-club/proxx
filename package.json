@@ -17,8 +17,7 @@
     "fmt": "prettier --write 'src/**/*.{ts,tsx,css}' *.{js,json,md} 'lib/**/*.js' && npm run lintfix",
     "lint": "tslint -t verbose -c tslint.json 'src/**/*.{ts,tsx}'",
     "lintfix": "tslint -t verbose -c tslint.json --fix 'src/**/*.{ts,tsx}'",
-    "fmt_test": "test $(prettier -l 'src/**/*.{ts,tsx,css}' *.{js,json,md} 'lib/**/*.js' | wc -l) -eq 0",
-    "test": "npm run fmt_test && npm run lint && npm run build"
+    "fmt_test": "test $(prettier -l 'src/**/*.{ts,tsx,css}' *.{js,json,md} 'lib/**/*.js' | wc -l) -eq 0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -38,7 +37,6 @@
     "glsl-parser": "^2.0.1",
     "glsl-tokenizer": "^2.1.5",
     "http-server": "^0.11.1",
-    "husky": "^2.2.0",
     "idb-keyval": "^3.2.0",
     "postcss-url": "^8.0.0",
     "preact": "^8.3.1",
