@@ -35,6 +35,7 @@ import addFilesPlugin from "./lib/add-files-plugin";
 
 // Delete 'docs'
 rimraf.sync("docs");
+rimraf.sync(".ts-tmp");
 rimraf.sync("dist-prerender");
 rimraf.sync(".rpt2_cache");
 
