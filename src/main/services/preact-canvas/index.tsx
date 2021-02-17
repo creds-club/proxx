@@ -158,12 +158,15 @@ export default class Root extends Component<Props, State> {
     });
 
     // Is this the reload after an update?
-    const instantGameDataStr = prerender
-      ? false
-      : sessionStorage.getItem(immedateGameSessionKey);
+    // const instantGameDataStr = prerender
+    //   ? false
+    //   : sessionStorage.getItem(immedateGameSessionKey);
+
+    // start an instantGame
+    const instantGameDataStr = '{ "width": 8,"height": 8, "mines": 10, "usedKeyboard": false }';
 
     if (instantGameDataStr) {
-      sessionStorage.removeItem(immedateGameSessionKey);
+      // sessionStorage.removeItem(immedateGameSessionKey);
       this.setState({ awaitingGame: true });
     }
 
