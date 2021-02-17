@@ -56,7 +56,7 @@ const stateServicePromise: Promise<StateService> = (async () => {
   }
 
   // The timing of events here is super buggy on iOS, so we need to tread very carefully.
-  const worker = new Worker(workerURL);
+  const worker = new Worker("." + workerURL);
   // @ts-ignore - iOS Safari seems to wrongly GC the worker. Throwing it to the global to prevent
   // that happening.
   self.w = worker;
