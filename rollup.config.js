@@ -33,8 +33,9 @@ import pkg from "./package.json";
 import createHTMLPlugin from "./lib/create-html";
 import addFilesPlugin from "./lib/add-files-plugin";
 
-// Delete 'dist'
-rimraf.sync("dist");
+// Delete 'docs'
+rimraf.sync("docs");
+rimraf.sync(".ts-tmp");
 rimraf.sync("dist-prerender");
 rimraf.sync(".rpt2_cache");
 
@@ -45,7 +46,7 @@ function buildConfig({ prerender, watch } = {}) {
       sw: "src/sw/index.ts"
     },
     output: {
-      dir: "dist",
+      dir: "docs",
       format: "amd",
       sourcemap: !prerender,
       entryFileNames: "[name].js",
@@ -86,6 +87,7 @@ function buildConfig({ prerender, watch } = {}) {
       }),
       assetPlugin({
         initialAssets: [
+          "./src/assets/op.js",
           "./src/assets/space-mono-normal.woff2",
           "./src/assets/space-mono-bold.woff2",
           "./src/assets/favicon.png",

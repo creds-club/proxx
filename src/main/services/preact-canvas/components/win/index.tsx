@@ -125,7 +125,7 @@ export default class End extends Component<Props, State> {
           </div>
           <h2 class={winState}>
             {time === bestTime ? "New high score!" : "You win!"}{" "}
-            <span class={gridNameStyle}>({gridName})</span>
+            {/* <span class={gridNameStyle}>({gridName})</span> */}
           </h2>
           <div class={scoreRow}>
             <div class={score}>
@@ -138,7 +138,7 @@ export default class End extends Component<Props, State> {
               <div class={timeStyle}>{bestTimeStr}</div>
             </div>
           </div>
-          <button
+          {/* <button
             class={againButton}
             onClick={onRestart}
             ref={el => (this._playAgainBtn = el)}
@@ -150,7 +150,7 @@ export default class End extends Component<Props, State> {
           </button>
           <button class={mainButton} onClick={onMainMenu}>
             {isFeaturePhone ? <span class={shortcutKey}>*</span> : ""} Main menu
-          </button>
+          </button> */}
         </div>
       </div>
     );

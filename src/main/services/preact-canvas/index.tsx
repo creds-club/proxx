@@ -56,7 +56,7 @@ const stateServicePromise: Promise<StateService> = (async () => {
   }
 
   // The timing of events here is super buggy on iOS, so we need to tread very carefully.
-  const worker = new Worker(workerURL);
+  const worker = new Worker("." + workerURL);
   // @ts-ignore - iOS Safari seems to wrongly GC the worker. Throwing it to the global to prevent
   // that happening.
   self.w = worker;
@@ -138,7 +138,7 @@ export default class Root extends Component<Props, State> {
   private previousFocus: HTMLElement | null = null;
 
   private _gameChangeSubscribers = new Set<GameChangeCallback>();
-  private _awaitingGameTimeout: number = -1;
+  private _awaitingGameTimeout: any = -1;
   private _stateService?: StateService;
 
   constructor() {
@@ -158,12 +158,15 @@ export default class Root extends Component<Props, State> {
     });
 
     // Is this the reload after an update?
-    const instantGameDataStr = prerender
-      ? false
-      : sessionStorage.getItem(immedateGameSessionKey);
+    // const instantGameDataStr = prerender
+    //   ? false
+    //   : sessionStorage.getItem(immedateGameSessionKey);
+
+    // start an instantGame
+    const instantGameDataStr = '{ "width": 8,"height": 8, "mines": 10, "usedKeyboard": false }';
 
     if (instantGameDataStr) {
-      sessionStorage.removeItem(immedateGameSessionKey);
+      // sessionStorage.removeItem(immedateGameSessionKey);
       this.setState({ awaitingGame: true });
     }
 

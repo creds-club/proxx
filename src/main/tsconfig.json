@@ -3,7 +3,7 @@
   "compilerOptions": {
     "lib": ["esnext", "dom", "dom.iterable"],
     "paths": { "src/*": ["./src/*"] },
-    "types": []
+    "types": ["node"]
   },
   "references": [
     { "path": "../sw" },
