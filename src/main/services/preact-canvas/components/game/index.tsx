@@ -137,7 +137,8 @@ export default class Game extends Component<Props, State> {
               onCellClick={this.onCellClick}
               onDangerModeChange={this.props.onDangerModeChange}
             />,
-            playMode === PlayMode.Lost ? (
+            // playMode === PlayMode.Lost ? (
+            false ? (
               <div class={exitRow}>
                 <div class={exitRowInner}>
                   <button

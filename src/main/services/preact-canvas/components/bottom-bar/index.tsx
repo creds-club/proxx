@@ -195,9 +195,9 @@ export default class BottomBar extends Component<Props, State> {
     );
     return (
       <div class={[bottomBar, display ? "" : hidden].join(" ")} role="menubar">
-        {buttonType === "back" ? backBtn : infoBtn}
+        {/* {buttonType === "back" ? backBtn : infoBtn}
         {showDangerModeToggle && toggleBtn}
-        {fullscreenSupported ? fullscreenBtn : <div class={noFullscreen} />}
+        {fullscreenSupported ? fullscreenBtn : <div class={noFullscreen} />} */}
       </div>
     );
   }
