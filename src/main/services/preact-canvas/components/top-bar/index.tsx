@@ -32,7 +32,7 @@ interface TimeProps {
 // Using a sub class to avoid Preact diffing every second.
 class Time extends Component<TimeProps, {}> {
   private _start?: number;
-  private _intervalId?: number;
+  private _intervalId?: any;
 
   componentDidMount() {
     if (this.props.running) {

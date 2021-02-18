@@ -138,7 +138,7 @@ export default class Root extends Component<Props, State> {
   private previousFocus: HTMLElement | null = null;
 
   private _gameChangeSubscribers = new Set<GameChangeCallback>();
-  private _awaitingGameTimeout: number = -1;
+  private _awaitingGameTimeout: any = -1;
   private _stateService?: StateService;
 
   constructor() {

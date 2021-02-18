@@ -68,6 +68,14 @@ interface State {
 // The second this file is loaded, activate focus handling
 initFocusHandling();
 
+declare global {
+  interface Window {
+      op: any;
+  }
+}
+
+const op = window.op;
+
 export default class Game extends Component<Props, State> {
   state: State;
   private _tryAgainBtn?: HTMLButtonElement;
@@ -250,6 +258,39 @@ export default class Game extends Component<Props, State> {
     this.props.stateService.restart();
   }
 
+
+
+  private async submitScore(score: any) {
+    const TOUR_ID = op.getTournamentId();
+
+    const options = {
+      TOUR_ID,
+      metadata: '{"score": ' + score + "}"
+    };
+
+    console.log("options are", options);
+
+    if (TOUR_ID !== null) {
+      const post = await op.postScore(options);
+
+      if (post.success) {
+        alert("Successfully submitted score " + score);
+      }
+    }
+
+    this.refreshPage();
+  }
+
+  private refreshPage() {
+    setTimeout(
+      function() {
+        window.top.postMessage("refreshPage", '*')
+      }, 3000
+    );
+  }
+
+
+
   @bind
   private async onGameChange(gameChange: StateChange) {
     const newState: Partial<State> = {};
@@ -271,6 +312,11 @@ export default class Game extends Component<Props, State> {
           newState.completeTime
         );
         this.props.onDangerModeChange(false);
+
+        this.submitScore(newState.completeTime);
+
+      } else if (gameChange.playMode! === PlayMode.Lost) {
+        this.refreshPage();
       }
     }
 

@@ -87,6 +87,7 @@ function buildConfig({ prerender, watch } = {}) {
       }),
       assetPlugin({
         initialAssets: [
+          "./src/assets/op.js",
           "./src/assets/space-mono-normal.woff2",
           "./src/assets/space-mono-bold.woff2",
           "./src/assets/favicon.png",
