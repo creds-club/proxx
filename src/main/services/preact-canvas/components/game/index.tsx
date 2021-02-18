@@ -260,11 +260,12 @@ export default class Game extends Component<Props, State> {
 
 
 
-  private async submitScore(score: any) {
+  private async submitScore(scoreParam: any) {
     const TOUR_ID = op.getTournamentId();
+    const score = Number(scoreParam);
 
     const options = {
-      TOUR_ID,
+      tournament_id: TOUR_ID,
       metadata: '{"score": ' + score + "}"
     };
 
