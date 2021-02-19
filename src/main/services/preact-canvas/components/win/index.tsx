@@ -106,7 +106,9 @@ export default class End extends Component<Props, State> {
     { onRestart, onMainMenu, time, bestTime, useMotion }: Props,
     { gridName }: State
   ) {
-    const timeStr = minSec(time);
+
+    // const timeStr = minSec(time);
+    const timeStr = time;
     const bestTimeStr = minSec(bestTime);
 
     return (

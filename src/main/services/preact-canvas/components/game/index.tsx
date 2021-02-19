@@ -62,6 +62,7 @@ interface State {
   renderer?: Renderer;
   animator?: Animator;
   completeTime: number;
+  computedScore: number;
   bestTime: number;
 }
 
@@ -88,6 +89,7 @@ export default class Game extends Component<Props, State> {
       startTime: 0,
       completeTime: 0,
       bestTime: 0,
+      computedScore: 0,
       endTime: 0
     };
 
@@ -106,7 +108,7 @@ export default class Game extends Component<Props, State> {
       useMotion,
       bestTime: previousBestTime
     }: Props,
-    { playMode, toReveal, animator, renderer, completeTime, bestTime }: State
+    { playMode, toReveal, animator, renderer, completeTime, computedScore, bestTime }: State
   ) {
     const timerRunning = playMode === PlayMode.Playing;
 
@@ -125,7 +127,7 @@ export default class Game extends Component<Props, State> {
           <Win
             onMainMenu={this.onReset}
             onRestart={this.onRestart}
-            time={completeTime}
+            time={computedScore}
             bestTime={bestTime}
             width={width}
             height={height}
@@ -314,7 +316,9 @@ export default class Game extends Component<Props, State> {
         );
         this.props.onDangerModeChange(false);
 
-        this.submitScore(newState.completeTime);
+        // compute score from time
+        newState.computedScore = Number((1000000 / newState.completeTime).toFixed(3));
+        this.submitScore(newState.computedScore);
 
       } else if (gameChange.playMode! === PlayMode.Lost) {
         this.refreshPage();
