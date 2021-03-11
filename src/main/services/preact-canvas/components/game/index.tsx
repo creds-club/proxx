@@ -278,10 +278,10 @@ export default class Game extends Component<Props, State> {
 
       if (post.success) {
         alert("Successfully submitted score " + score);
+        this.refreshPage();
       }
     }
 
-    this.refreshPage();
   }
 
   private refreshPage() {
