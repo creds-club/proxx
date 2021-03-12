@@ -276,19 +276,22 @@ export default class Game extends Component<Props, State> {
     if (TOUR_ID !== null) {
       const post = await op.postScore(options);
 
+      console.log("post result:");
+      console.log(post);
+
       if (post.success) {
         alert("Successfully submitted score " + score);
-        this.refreshPage();
       }
     }
 
+    this.refreshPage();
   }
 
   private refreshPage() {
     setTimeout(
       function() {
         window.top.postMessage("refreshPage", '*')
-      }, 3000
+      }, 4000
     );
   }
 

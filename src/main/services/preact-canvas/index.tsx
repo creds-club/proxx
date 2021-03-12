@@ -163,7 +163,7 @@ export default class Root extends Component<Props, State> {
     //   : sessionStorage.getItem(immedateGameSessionKey);
 
     // start an instantGame
-    const instantGameDataStr = '{ "width": 8,"height": 8, "mines": 10, "usedKeyboard": false }';
+    const instantGameDataStr = '{ "width": 8,"height": 8, "mines": 4, "usedKeyboard": false }';
 
     if (instantGameDataStr) {
       // sessionStorage.removeItem(immedateGameSessionKey);
