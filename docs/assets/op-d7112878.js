@@ -3106,7 +3106,7 @@
              }
         }    
 
-        postScore = async (options) => {
+        postScoreJs = async (options) => {
 
             try {
 
@@ -3123,7 +3123,30 @@
                 console.error("postScore failed [" + e.status + ":" + e.statusText + "]"); 
                 return(e);
              }
-        } 
+        }
+        
+        postScore = async (options) => {
+
+            try {
+
+                await this.refreshSession();
+
+                const config = {
+                    headers: {
+                        Authorization: 'Bearer ' + this.session.token,
+                        'Content-Type': 'application/json'
+                    }
+                };
+
+                const res = await axios.post('http://op-arcade-dev.herokuapp.com/oparcade/api/tournaments/post-score', options, config);
+
+                return res;
+
+            } catch (e) {
+                console.error("postScore failed [" + e.status + ":" + e.statusText + "]"); 
+                return(e);
+             }
+        }    
         
         joinTourney = async (options) => {
 
