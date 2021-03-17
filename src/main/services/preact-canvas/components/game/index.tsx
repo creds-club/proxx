@@ -284,7 +284,7 @@ export default class Game extends Component<Props, State> {
       }
     }
 
-    this.refreshPage();
+    // this.refreshPage();
   }
 
   private refreshPage() {
